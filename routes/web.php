@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangeLangController;
 use App\Notifications\companyCreat;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -25,14 +26,16 @@ use Illuminate\Support\Facades\Notification;
         // App::setLocale($locale);
           return view('welcome');
       });
+      Route::get('/{lang}',[ChangeLangController::class,'change']);
       
       Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
           return view('dashboard');
       })->name('dashboard');
-      Route::group(['middleware' => ["auth:sanctum", 'verified']], function(){
+
+      Route::group(['prefix'=> '/{lang}' , 'middleware' => ["auth:sanctum", 'verified']], function(){
           //Company Routes
           
-           Route::get('dashboard', 'App\Http\Controllers\CompanyController@dashboardInfo');
+           Route::get('dashboard', 'App\Http\Controllers\CompanyController@dashboardInfo')->name('dashborad.index');
           Route::get('companies', 'App\Http\Controllers\CompanyController@index');
           Route::get('add-company', 'App\Http\Controllers\CompanyController@create');
           Route::post('add-company', 'App\Http\Controllers\CompanyController@onCreate');

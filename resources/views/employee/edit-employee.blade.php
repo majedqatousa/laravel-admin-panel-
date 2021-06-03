@@ -1,9 +1,9 @@
 @include('header')
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Add Employee</h1>
+        <h1 class="h2"> {{__('web.edit-employee')}} </h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/employees" class="btn btn-sm btn-outline-secondary"> Employees </a>
+            <a href="/{{app()->getLocale()}}/employees" class="btn btn-sm btn-outline-secondary"> {{__('web.employees')}} </a>
 
         </div>
     </div>
@@ -11,7 +11,7 @@
 
 <div class="row justify-content-md-center">
     <div class="col-md-6">
-        <form method="POST"  action="/edit-employee/{{$employee->id}}">
+        <form method="POST"  action="/{{app()->getLocale()}}/edit-employee/{{$employee->id}}">
         @csrf
         @method('PUT')
         <div class="row">
@@ -50,8 +50,12 @@
                     <input type="text" value="{{$employee->phone}}" name="phone" class="form-control" id="phone" placeholder="phone" value="" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Update employee</button>
 
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 ">
+                <button type="submit" class="btn btn-success">Update employee</button>
+            </div>
         </div>
         </form>
     </div>

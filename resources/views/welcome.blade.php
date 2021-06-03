@@ -35,7 +35,7 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm btn btn-dark">{{__('web.dashboard')}}</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm  btn btn-dark">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm  btn btn-dark">{{__('web.login')}}</a>
 
                        
                     @endauth

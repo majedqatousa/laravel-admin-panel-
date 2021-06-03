@@ -1,9 +1,9 @@
 @include('header')
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Employees</h1>
+        <h1 class="h2">{{__('web.employees')}}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/add-employee" class="btn btn-sm btn-success">Add</a>
+            <a href="/{{app()->getLocale()}}/add-employee" class="btn btn-sm btn-success"> {{__('web.add-employee')}} </a>
 
 
         </div>
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="alert alert-warning">
-            No employees found 
+            {{__('web.no-employees')}}
             </div>
         </div>
     </div>
@@ -26,12 +26,12 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Company</th>
-                    <th>Action</th>
+                    <th> {{__('web.fname')}} </th>
+                    <th>{{__('web.lname')}}</th>
+                    <th>{{__('web.email')}}</th>
+                    <th>{{__('web.phone')}}</th>
+                    <th>{{__('web.company')}}</th>
+                    <th>{{__('web.action')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,11 +50,11 @@
                     <td>
                         <div class="row ">
                             <div class="col-md-3">
-                                <a class="btn btn-warning btn-sm" href="edit-employee/{{$employee->id}}">Edit</a>
+                                <a class="btn btn-warning btn-sm" href="/{{app()->getLocale()}}/edit-employee/{{$employee->id}}">{{__('web.edit')}}</a>
 
                             </div>
                             <div class="col-md-3">
-                                <a class="btn btn-danger btn-sm " href="delete-employee/{{$employee->id}}">Delete</a>
+                                <a class="btn btn-danger btn-sm " href="/{{app()->getLocale()}}/delete-employee/{{$employee->id}}">{{__('web.delete')}}</a>
                             </div>
                         </div>
                     </td>

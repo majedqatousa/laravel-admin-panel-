@@ -21,7 +21,7 @@ class CompanyController extends Controller
         
         return view('dashboard' , ['numOfCompaneis'=>$numOfCompaneis , 'numOfEmployees'=>$numOfEmployees]);
     }
-    public function show($company){
+    public function show($lang , $company){
       
         $data = Company::find($company);
         return view('company.company-details' ,['company'=>$data]);
@@ -60,14 +60,14 @@ class CompanyController extends Controller
         $user =User::first();
         $user->notify(new companyCreat);
 
-        return redirect('/companies');
+        return redirect('/'.app()->getLocale().'/companies');
     }
-    public function update(Company $company){
+    public function update($lang, Company $company){
 
         return View('company.edit-company', ['company' => $company]);
 
     }
-    public function onUpdate(Company $company, Request $request){
+    public function onUpdate($lang, Company $company, Request $request){
         request()->validate([
             'name' => 'required',
             'email' => 'required',
@@ -87,20 +87,20 @@ class CompanyController extends Controller
             
         ]);
 
-        return redirect('/companies');
+        return redirect('/'.app()->getLocale().'/companies');
 
     }
-    public function delete($company){
+    public function delete($lang , $company){
         $data = Company::find($company);
         $data->delete();
-        return redirect('/companies');
+        return redirect('/'.app()->getLocale().'/companies');
 
 
     }
-    public function onDelete(Company $company){
+    public function onDelete($lang ,Company $company){
 
         $company->delete();
 
-        return redirect('/companies');
+        return redirect('/'.app()->getLocale().'/companies');
     }
 }

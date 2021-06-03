@@ -1,9 +1,9 @@
 @include('header')
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Companies</h1>
+        <h1 class="h2">{{__('web.companeis')}}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/add-company" class="btn btn-sm btn-success"> Add </a>
+            <a href="/{{app()->getLocale()}}/add-company" class="btn btn-sm btn-success"> {{__('web.add-company')}} </a>
 
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="alert alert-warning">
-            No companies found 
+            {{__('web.no-company')}} 
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                     <div class="company-body">
                         <h2>{{$company->name}}</h2>
                         <p>email : {{$company->email}} , website : {{$company->website}} </p>
-                        <p><a class="btn btn-secondary" href="/company-details/{{$company->id}}">View details &raquo;</a></p>
+                        <p><a class="btn btn-secondary" href="/{{app()->getLocale()}}/company-details/{{$company->id}}">View details &raquo;</a></p>
                     </div>
 
                 </div>

@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Edit Company</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="/companies" class="btn btn-sm btn-outline-secondary"> Companies </a>
+            <a href="/{{app()->getLocale()}}/companies" class="btn btn-sm btn-outline-secondary"> Companies </a>
 
         </div>
     </div>
@@ -11,7 +11,7 @@
 
 <div class="row justify-content-md-center">
     <div class="col-md-6">
-        <form method="POST"  action="/edit-company/{{ $company->id }}" enctype="multipart/form-data">
+        <form method="POST"  action="/{{app()->getLocale()}}/edit-company/{{ $company->id }}" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')

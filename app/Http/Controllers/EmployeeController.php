@@ -49,15 +49,15 @@ class EmployeeController extends Controller
             
         ]);
 
-        return redirect('/employees');
+        return redirect('/'.app()->getLocale().'/employees');
     }
-    public function update(Employee $employee){
+    public function update($lang ,Employee $employee){
         $companeis = Company::all();
 
         return View('employee.edit-employee', ['employee' => $employee ,'companeis' => $companeis]);
 
     }
-    public function onUpdate(Employee $employee, Request $request){
+    public function onUpdate($lang, Employee $employee, Request $request){
         // dd(request()->all());
         request()->validate([
             'firstName' => 'required',
@@ -77,20 +77,20 @@ class EmployeeController extends Controller
             
         ]);
 
-        return redirect('/employees');
+        return redirect('/'.app()->getLocale().'/employees');
 
     }
-    public function delete($employee){
+    public function delete($lang ,$employee){
         $data = Employee::find($employee);
         $data->delete();
-        return redirect('/employees');
+        return redirect('/'.app()->getLocale().'/employees');
 
 
     }
-    public function onDelete(Employee $company){
+    public function onDelete($lang ,Employee $company){
 
         $company->delete();
 
-        return redirect('/companies');
+        return redirect('/'.app()->getLocale().'/companies');
     }
 }
